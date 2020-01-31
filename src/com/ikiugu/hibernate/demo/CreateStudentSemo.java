@@ -30,8 +30,6 @@ public class CreateStudentSemo {
 			
 			session.getTransaction().commit();
 			
-			session.getTransaction().rollback();
-			
 		} finally {
 			factory.close();
 		}
