@@ -34,8 +34,13 @@ public class DeleteStudentDemo {
 			System.out.println("The retrieved student is " + retrievedStudent);
 			
 			
-			//delete a single record using the normal delete
-			session.delete(retrievedStudent);
+			/*
+			 * //delete a single record using the normal delete
+			 * session.delete(retrievedStudent);
+			 */
+			
+			// delete using a where clause
+			session.createQuery("delete from Student where id=3").executeUpdate();
 			
 			// commit the transaction
 			session.getTransaction().commit();
