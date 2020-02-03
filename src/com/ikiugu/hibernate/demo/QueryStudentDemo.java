@@ -33,14 +33,23 @@ public class QueryStudentDemo {
 			System.out.println("We have " + students.size() + " students saved: ");
 			
 			// loop through to display the students
-			for (Student theStudent : students) {
-				System.out.println(theStudent);
-			}
+			studentLister(students);
+			
+			// query students where first name = "tom"
+			students = session.createQuery("from Student s where s.firstName='tom'").getResultList();
+			
+			studentLister(students);
 			
 			session.getTransaction().commit();
 			
 		} finally {
 			factory.close();
+		}
+	}
+
+	private static void studentLister(List<Student> students) {
+		for (Student theStudent : students) {
+			System.out.println("\n"+theStudent);
 		}
 	}
 
