@@ -1,5 +1,8 @@
 package com.ikiugu.hibernate.demo;
 
+import java.text.ParseException;
+import java.util.Date;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -22,7 +25,17 @@ public class CreateStudentDemo {
 		//do db stuff
 		try {
 			
-			Student someStudent = new Student("Alfy", "Me", "me@email.com");
+			String dateOfBirth = "02/02/2020";
+			
+			Date formattedDate = null;
+			try {
+				formattedDate = DateUtils.parseDate(dateOfBirth);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			Student someStudent = new Student("Alfy", "Me", "me@email.com", formattedDate);
 			
 			session.beginTransaction();
 			
