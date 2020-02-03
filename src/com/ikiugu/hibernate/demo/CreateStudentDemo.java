@@ -6,7 +6,7 @@ import org.hibernate.cfg.Configuration;
 
 import com.ikiugu.hibernate.demo.entity.Student;
 
-public class CreateStudentSemo {
+public class CreateStudentDemo {
 
 	public static void main(String[] args) {
 		
