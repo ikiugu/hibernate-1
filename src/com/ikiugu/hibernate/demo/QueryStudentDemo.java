@@ -47,6 +47,13 @@ public class QueryStudentDemo {
 			
 			studentLister(students);
 			
+			// query to check whether email ends with "%gmail.com"
+			students = session.createQuery("from Student s where s.email LIKE '%gmail.com'").getResultList();
+			
+			studentLister(students);
+			
+			
+			
 			session.getTransaction().commit();
 			
 		} finally {
@@ -55,6 +62,8 @@ public class QueryStudentDemo {
 	}
 
 	private static void studentLister(List<Student> students) {
+		System.out.println("The number of students in the result is "+ students.size());
+		
 		for (Student theStudent : students) {
 			System.out.println("\n"+theStudent);
 		}
