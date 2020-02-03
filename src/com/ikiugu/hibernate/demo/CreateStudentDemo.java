@@ -25,15 +25,9 @@ public class CreateStudentDemo {
 		//do db stuff
 		try {
 			
-			String dateOfBirth = "02/02/2020";
+			String dateOfBirth = "31/02/2020";
 			
-			Date formattedDate = null;
-			try {
-				formattedDate = DateUtils.parseDate(dateOfBirth);
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			Date formattedDate = DateUtils.parseDate(dateOfBirth);
 			
 			Student someStudent = new Student("Alfy", "Me", "me@email.com", formattedDate);
 			
@@ -43,7 +37,9 @@ public class CreateStudentDemo {
 			
 			session.getTransaction().commit();
 			
-		} finally {
+		} catch(Exception ex){
+			ex.printStackTrace();
+		}finally {
 			factory.close();
 		}
 	}
