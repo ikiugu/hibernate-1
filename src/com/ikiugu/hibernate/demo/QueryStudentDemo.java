@@ -40,6 +40,13 @@ public class QueryStudentDemo {
 			
 			studentLister(students);
 			
+			// query students where lastName ="It" Or firstName = "C"
+			students = session.createQuery("from Student s where "
+					+ "s.lastName='It'"
+					+ "OR s.firstName='C'").getResultList();
+			
+			studentLister(students);
+			
 			session.getTransaction().commit();
 			
 		} finally {
