@@ -37,7 +37,19 @@ public class UpdateStudentDemo {
 			// single record update
 			retrievedStudent.setEmail("smurf@gmail.com");
 			retrievedStudent.setFirstName("flamengo");
-					
+			
+			// commit the transaction
+			session.getTransaction().commit();
+			
+			// bulk update records
+			// get a session then start a transaction
+			session = factory.getCurrentSession();
+			session.beginTransaction();
+			
+			session.createQuery("update Student set email='madness@gmail.com'").executeUpdate(); // this updates all records
+			
+			session.createQuery("update Student s set email='madnez@gmail.com' where s.lastName='Them'").executeUpdate(); // this updates the method that fits the parameters
+					 
 			// commit the transaction
 			session.getTransaction().commit();
 		
